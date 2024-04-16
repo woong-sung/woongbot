@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ .'/conGridGps.php';
+require_once __DIR__ . '/conGridGps.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
@@ -17,8 +17,8 @@ $headers = [
   "Content-Type:application/json",
 ];
 
-$search = $_GET['q'];
-// $search = urlencode("인천");
+// $search = $_GET['q'];
+$search = urlencode("인천");
 
 $geocoding_url = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" . $search;
 $request = curl_init();
@@ -46,7 +46,7 @@ $nx = $gpsToGridData['x'];
 $ny = $gpsToGridData['y'];
 // print_r($lat.", ".$lng);
 // print_r($nx.", ".$ny);
-$weather_url = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst?ServiceKey=" . $weather_key . "&numOfRows=" . $num_of_rows . "&base_date=" . $date . "&base_time=" . $time . "&nx=" . $nx . "&ny=" . $ny."&dataType=JSON";
+$weather_url = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst?ServiceKey=" . $weather_key . "&numOfRows=" . $num_of_rows . "&base_date=" . $date . "&base_time=" . $time . "&nx=" . $nx . "&ny=" . $ny . "&dataType=JSON";
 // echo $weather_url;
 $request = curl_init();
 curl_setopt($request, CURLOPT_URL, $weather_url);
@@ -57,18 +57,17 @@ $result = curl_exec($request);
 // echo $result;
 $data_arr = json_decode($result, true)["response"]["body"]["items"]["item"];
 
-$temperature ="";
+$temperature = "";
 foreach ($data_arr as $data) {
   $category = $data["category"];
-  if ($category=="T1H") {
+  if ($category == "T1H") {
     $temperature = $data["obsrValue"];
   }
 }
 foreach ($data_arr as $data) {
-  if($data['category']=="T1H") {
+  if ($data['category'] == "T1H") {
     $result = $data['obsrValue'];
   }
 }
 
-echo $result;
-
+echo json_encode(["result" => $result]);
