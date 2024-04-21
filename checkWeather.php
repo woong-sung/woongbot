@@ -37,7 +37,7 @@ $place =  $data["addresses"][0]["roadAddress"];
 // 날씨 검색 시작
 $date = date("Ymd");
 $time = date("H" . "00");
-$num_of_rows = 10;
+$num_of_rows = 20;
 $weather_key = $_ENV["WEATHER_API_KEY"];
 
 $ConvGridGps = new ConvGridGps();
@@ -72,10 +72,10 @@ foreach ($data_arr as $data) {
   }
 }
 
-if ($_GET['q'] == "") {
-  $result = "error : 검색어 정보가 없습니다.";
-} else if ($temp == "") {
+if ($temp == "") {
   $result = "error : temp 정보가 없습니다.";
+} else if ($_GET['q'] == "") {
+  $result = "error : 검색어 정보가 없습니다.";
 } else {
   $result = "success";
 }
