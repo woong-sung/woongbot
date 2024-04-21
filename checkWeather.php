@@ -71,8 +71,11 @@ foreach ($data_arr as $data) {
     $temp = $data['obsrValue'];
   }
 }
-if ($temp == "") {
-  $result = "error";
+
+if ($_GET['q'] == "") {
+  $result = "error : 검색어 정보가 없습니다.";
+} else if ($temp == "") {
+  $result = "error : temp 정보가 없습니다.";
 } else {
   $result = "success";
 }
