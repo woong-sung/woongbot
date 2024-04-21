@@ -16,8 +16,9 @@ $headers = [
   "X-NCP-APIGW-API-KEY:" . $naver_secrete,
   "Content-Type:application/json",
 ];
+$query = $_GET['query'] == "" ? $_POST['query'] : $_GET['query'];
 
-$search = urlencode($_GET['query']);
+$search = urlencode($query);
 // $search = urlencode("인천");
 
 $geocoding_url = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" . $search;
