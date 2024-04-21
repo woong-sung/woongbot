@@ -32,7 +32,7 @@ $data = json_decode($result, true);
 
 // print_r($data); 
 $place =  $data["addresses"][0]["roadAddress"];
-echo $place;
+// echo $place;
 
 // 날씨 검색 시작
 $date = date("Ymd");
