@@ -17,7 +17,7 @@ $headers = [
   "Content-Type:application/json",
 ];
 
-// $search = $_GET['q'];
+// $search = $_GET['query'];
 $search = urlencode("인천");
 
 $geocoding_url = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" . $search;
@@ -36,7 +36,13 @@ $place =  $data["addresses"][0]["roadAddress"];
 
 // 날씨 검색 시작
 $date = date("Ymd");
-$time = date("H" . "00");
+$time = date("H"."00");
+
+// 10 분까지는 직전 데이터 보여주기
+if (in_array(date("m"),["01","02","03","04","05","06","07","08","09","10"])){
+  $time = date("H"."00", strtotime("- 1 hours"));
+}
+
 $num_of_rows = 20;
 $weather_key = $_ENV["WEATHER_API_KEY"];
 
