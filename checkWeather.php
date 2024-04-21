@@ -47,7 +47,6 @@ $gpsToGridData = $ConvGridGps->gpsToGRID($lat, $lng);
 $nx = $gpsToGridData['x'];
 $ny = $gpsToGridData['y'];
 // print_r($lat.", ".$lng);
-// echo "\n";
 // print_r($nx.", ".$ny);
 $weather_url = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst?ServiceKey=" . $weather_key . "&numOfRows=" . $num_of_rows . "&base_date=" . $date . "&base_time=" . $time . "&nx=" . $nx . "&ny=" . $ny . "&dataType=JSON";
 // echo $weather_url;
