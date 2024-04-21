@@ -17,7 +17,7 @@ $headers = [
   "Content-Type:application/json",
 ];
 
-$search = urlencode($_GET['query']);
+$search = $_GET['query'];
 // $search = urlencode("인천");
 
 $geocoding_url = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" . $search;
