@@ -17,8 +17,8 @@ $headers = [
   "Content-Type:application/json",
 ];
 
-$search = $_GET['q'];
-// $search = urlencode("계산동");
+// $search = $_GET['q'];
+$search = urlencode("인천");
 
 $geocoding_url = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" . $search;
 $request = curl_init();
@@ -74,7 +74,7 @@ foreach ($data_arr as $data) {
 
 if ($temp == "") {
   $result = "error : temp 정보가 없습니다.";
-} else if ($_GET['q'] == "") {
+} else if ($search == "") {
   $result = "error : 검색어 정보가 없습니다.";
 } else {
   $result = "success";
@@ -84,7 +84,8 @@ $json_data = [
   "temp" => $temp,
   "date" => $date,
   "time" => $time,
-  "place" => $place
+  "place" => $place,
+  "search" => $search
 ];
 
 echo json_encode($json_data);
