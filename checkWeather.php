@@ -17,8 +17,8 @@ $headers = [
   "Content-Type:application/json",
 ];
 
-// $search = $_GET['q'];
-$search = urlencode("제주");
+$search = $_GET['q'];
+$search = urlencode("계산동");
 
 $geocoding_url = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" . $search;
 $request = curl_init();
@@ -30,7 +30,9 @@ curl_setopt($request, CURLOPT_RETURNTRANSFER, true);
 $result = curl_exec($request);
 $data = json_decode($result, true);
 
-// print_r($data);
+// print_r($data); 
+$place =  $data["addresses"][0]["roadAddress"];
+echo $place;
 
 // 날씨 검색 시작
 $date = date("Ymd");
@@ -67,8 +69,20 @@ foreach ($data_arr as $data) {
 }
 foreach ($data_arr as $data) {
   if ($data['category'] == "T1H") {
-    $result = $data['obsrValue'];
+    $temp = $data['obsrValue'];
   }
 }
+if ($temp == "") {
+  $result = "error";
+} else {
+  $result = "success";
+}
+$json_data = [
+  "result" => $result,
+  "temp" => $temp,
+  "date" => $date,
+  "time" => $time,
+  "place" => $place
+];
 
-echo json_encode(["result" => $result]);
+echo json_encode($json_data);
