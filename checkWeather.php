@@ -89,7 +89,7 @@ $json_data = [
   "result" => $result,
   "temp" => $temp,
   "date" => $date,
-  "time" => $time,
+  "time" => substr($time,0,2),
   "place" => $place,
   "search" => $search
 ];
