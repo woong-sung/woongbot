@@ -18,7 +18,7 @@ $headers = [
 ];
 
 $search = $_GET['q'];
-$search = urlencode("계산동");
+// $search = urlencode("계산동");
 
 $geocoding_url = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" . $search;
 $request = curl_init();
