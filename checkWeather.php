@@ -17,7 +17,7 @@ $headers = [
   "Content-Type:application/json",
 ];
 
-$query = $_GET['query'] == "" ? $_POST['query'] : $_GET['query'];
+$query = $_GET['action']['params']['query'] == "" ? $_POST['action']['params']['query'] : $_GET['action']['params']['query'];
 
 $search = urlencode($query);
 // $search = urlencode("인천");
@@ -27,7 +27,7 @@ $request = curl_init();
 curl_setopt($request, CURLOPT_URL, $geocoding_url);
 curl_setopt($request, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($request, CURLOPT_HTTPGET, true);
-curl_setopt($request, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($request, CURLOPT_RETURNTRANSFER, true);    
 
 $result = curl_exec($request);
 $data = json_decode($result, true);
