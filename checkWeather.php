@@ -19,9 +19,9 @@ $headers = [
 $json = file_get_contents('php://input');
 $json = json_decode($json);
 // $query = $_GET['action']['params']['query'] == "" ? $_POST['action']['params']['query'] : $_GET['action']['params']['query'];
-$query = $json['action']['params']['query'];
-$search = urlencode($query);
-// $search = urlencode("인천");
+// $query = $json['action']['params']['query'];
+// $search = urlencode($query);
+$search = urlencode("인천");
 
 $geocoding_url = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" . $search;
 $request = curl_init();
