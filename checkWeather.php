@@ -94,7 +94,8 @@ $json_data = [
   "time" => substr($time,0,2),
   "place" => $place,
   "search" => urldecode($search),
-  "query" => $query
+  "query" => $query,
+  "get" => $_GET
 ];
 
 echo json_encode($json_data);
