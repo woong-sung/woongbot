@@ -95,7 +95,8 @@ $json_data = [
   "place" => $place,
   "search" => urldecode($search),
   "query" => $query,
-  "get" => $_GET
+  "get" => $_GET,
+  "post" => $_POST
 ];
 
 echo json_encode($json_data);
