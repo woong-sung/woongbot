@@ -19,8 +19,8 @@ $headers = [
 
 $query = $_GET['query'] == "" ? $_POST['query'] : $_GET['query'];
 
-// $search = urlencode($query);
-$search = urlencode("인천");
+$search = urlencode($query);
+// $search = urlencode("인천");
 
 $geocoding_url = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" . $search;
 $request = curl_init();
