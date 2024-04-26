@@ -18,7 +18,7 @@ $headers = [
 ];
 $json = file_get_contents('php://input');
 $json = json_decode($json);
-$query = $json->action->params->query;
+$query = $json->action->detailParams->query->value;
 // $query = $_GET['action']['params']['query'] == "" ? $_POST['action']['params']['query'] : $_GET['action']['params']['query'];
 // $query = $json['action']['params']['query'];
 $search = urlencode($query);
