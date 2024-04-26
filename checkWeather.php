@@ -98,7 +98,7 @@ $json_data = [
   "query" => $query,
   "get" => $_GET,
   "post" => $_POST,
-  "json" => $json,
+  "json" => $json['action']['params']['query'],
 ];
 
 echo json_encode($json_data);
