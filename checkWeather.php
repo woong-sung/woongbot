@@ -81,7 +81,7 @@ if ($temp == "") {
 } else if ($search == "") {
   $result = "error : 검색어 정보가 없습니다.";
 } else {
-  $result = "$json_org 지역의 현재 온도는 $temp ℃ 입니다.
+  $result = "$search 지역의 현재 온도는 $temp ℃ 입니다.
 기상청 기준, 기준 시각 : $time_h 시
 기준 지역 : $place";
 }
@@ -90,7 +90,7 @@ if ($temp == "") {
 $json_data = [
   "result" => $result,
   "search" => urldecode($search),
-  "json_org" => $json_org
+  "json_org" => $json
 ];
 
 echo json_encode($json_data);
