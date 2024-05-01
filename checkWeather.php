@@ -77,8 +77,6 @@ foreach ($data_arr as $data) {
 }
 
 if ($temp == "") {
-  $result = "error : temp 정보가 없습니다.";
-} else if ($search == "") {
   $result = "error : 검색어 정보가 없습니다.";
 } else {
   $result = "$query 지역의 현재 온도는 $temp ℃ 입니다.
