@@ -16,8 +16,8 @@ $headers = [
   "X-NCP-APIGW-API-KEY:" . $naver_secrete,
   "Content-Type:application/json",
 ];
-$json = file_get_contents('php://input');
-$json = json_decode($json);
+$json_org = file_get_contents('php://input');
+$json = json_decode($json_org);
 $query = $json->action->detailParams->query->value;
 // $query = $_GET['action']['params']['query'] == "" ? $_POST['action']['params']['query'] : $_GET['action']['params']['query'];
 // $query = $json['action']['params']['query'];
@@ -96,6 +96,7 @@ $json_data = [
   "time" => substr($time,0,2),
   "place" => $place,
   "search" => urldecode($search),
+  "json_org" => $json_org
 ];
 
 echo json_encode($json_data);
