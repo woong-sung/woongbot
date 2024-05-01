@@ -81,7 +81,7 @@ if ($temp == "") {
 } else if ($search == "") {
   $result = "error : 검색어 정보가 없습니다.";
 } else {
-  $result = "$search 지역의 현재 온도는 $temp ℃ 입니다.
+  $result = "$query 지역의 현재 온도는 $temp ℃ 입니다.
 기상청 기준, 기준 시각 : $time_h 시
 기준 지역 : $place";
 }
