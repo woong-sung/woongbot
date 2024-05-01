@@ -41,13 +41,14 @@ $place =  $data["addresses"][0]["roadAddress"];
 
 // 날씨 검색 시작
 $date = date("Ymd");
-$time_h = date("H");
-$time = $time_h . "00";
 
+// 기준시간 설정
+$time_h = date("H");
 // 10 분까지는 직전 데이터 보여주기
 if (in_array(date("i"), ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10"])) {
-  $time = date("H" . "00", strtotime("- 1 hours"));
+  $time_h = date("H", strtotime("- 1 hours"));
 }
+$time = $time_h . "00";
 
 $num_of_rows = 20;
 $weather_key = $_ENV["WEATHER_API_KEY"];
