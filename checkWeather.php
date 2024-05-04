@@ -1,12 +1,6 @@
 <?php
-require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/conGridGps.php';
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
-// 시간대 설정
-date_default_timezone_set("Asia/Seoul");
+// 환경설정 파일불러오기
+require_once __DIR__ . '/config.php';
 
 // 좌표 검색 시작
 $naver_key = $_ENV["NAVER_API_KEY"];
@@ -18,6 +12,7 @@ $headers = [
   "X-NCP-APIGW-API-KEY:" . $naver_secrete,
   "Content-Type:application/json",
 ];
+
 $json_org = file_get_contents('php://input');
 $json = json_decode($json_org);
 
@@ -70,7 +65,7 @@ $result = curl_exec($request);
 
 $data_arr = json_decode($result, true)["response"]["body"]["items"]["item"];
 
-// 온도 값 추출
+// 현재 기온 값 추출
 foreach ($data_arr as $data) {
   if ($data['category'] == "T1H") {
     $temp = $data['obsrValue'];
