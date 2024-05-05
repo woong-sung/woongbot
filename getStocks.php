@@ -7,8 +7,10 @@ $query = "select * from stock";
 $data = mysqli_query($conn, $query);
 $result = "등록된 주식은 다음과 같습니다.\n";
 
-foreach (mysqli_fetch_assoc($data) as $i => $row) {
+$i=1;
+while ($row = mysqli_fetch_assoc($data)) {
   $result.=$i.") 종목 이름: ".$row['name'].", "."종목 코드: ".$row['code'];
+  $i++;
 }
 
 $json_data = [
@@ -16,5 +18,5 @@ $json_data = [
   "query" => $query
 ];
 
-print_r(json_encode($json_data));
+print_r(json_encode($result));
 
