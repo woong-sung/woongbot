@@ -1,6 +1,4 @@
 <?php
-// 환경설정 파일불러오기
-include __DIR__ . '\config.php';
 
 $host = "43.203.80.100";
 $username = "test";

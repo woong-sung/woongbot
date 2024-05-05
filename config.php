@@ -1,4 +1,4 @@
-<?
+<?php
 // composer 사용
 include __DIR__ . '/vendor/autoload.php';
 // 위경도를 날씨정보x,y값으로 변환해주는 파일

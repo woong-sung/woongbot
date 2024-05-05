@@ -3,8 +3,12 @@
 include __DIR__ . '/config.php';
 
 $query = "select * from stock";
-$result = mysqli_query($conn, $query);
-$row = mysqli_fetch_assoc($result);
+// $query = "show databases";
+$data = mysqli_query($conn, $query);
+$result = [];
+while ($row = mysqli_fetch_assoc($data)) {
+  $result[] = $row;
+}
 
-echo $row;
+print_r(json_encode($result));
 
