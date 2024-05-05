@@ -18,5 +18,5 @@ $json_data = [
   "query" => $query
 ];
 
-print_r(json_encode($result));
+print_r(json_encode($json_data));
 
